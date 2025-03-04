@@ -19,16 +19,16 @@
     <button type="submit">計算</button>
   </form>
   <?php 
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $num1 = $_POST["num1"];
+    if($_SERVER["REQUEST_METHOD"] == "POST") { // POSTリクエストの場合(POSTで送られてきたものかどうか判定)
+      $num1 = $_POST["num1"]; // POSTで送られてきた値を取得（name=""の中身を取得）
       $num2 = $_POST["num2"];
       $operator = $_POST["operator"];
       $result = "";
 
-      if(!is_numeric($num1) || !is_numeric($num2)) {
+      if(!is_numeric($num1) || !is_numeric($num2)) { // 数値かどうかを判定
         echo "数値を入力してください";
       } else {
-        switch($operator) {
+        switch($operator) {  // 演算子によって計算を分岐
           case "+":
             $result = $num1 + $num2;
             break;
@@ -45,7 +45,7 @@
               $result = $num1 / $num2;
             }
             break;
-          default:
+          default: // 上記以外の場合
             echo "正しく表示できません。";
             break;
         }
