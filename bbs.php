@@ -21,34 +21,36 @@
 	<title>Document</title>
 </head>
 <body>
-  <h1>掲示板</h1>
-	<form method="post">
-		<label>
-			<p>名前：</p>
-			<input type="text" name="name" placeholder="山田　太郎">
-		</label>
-		<label>
-			<p>コメント：</p>
-			<textarea name="message" placeholder="ここにテキストを入力してください"></textarea>
-		</label>
-		<button type="submit">送信</button>
-	</form>
-	<div>
-		<?php 
-			if(!empty($_SESSION["lists"])) {
-				foreach($_SESSION["lists"] as $comment) {
-					echo 
-					"<div>
-						<p>名前：{$comment['name']}</p>
-						<p>コメント：{$comment['message']}</p>
-					</div>";
+	<div class="content">
+		<h1>掲示板</h1>
+		<form method="post">
+			<label>
+				<p>名前：</p>
+				<input type="text" name="name" placeholder="山田　太郎">
+			</label>
+			<label>
+				<p>コメント：</p>
+				<textarea name="message" placeholder="ここにテキストを入力してください"></textarea>
+			</label>
+			<button type="submit">送信</button>
+		</form>
+		<div class="comment_group">
+			<?php 
+				if(!empty($_SESSION["lists"])) {
+					foreach($_SESSION["lists"] as $comment) {
+						echo 
+						"<div class='comment_box'>
+							<p>名前：{$comment['name']}</p>
+							<p>コメント：{$comment['message']}</p>
+						</div>";
+					}
 				}
-			}
-			else {
-				echo "<p>投稿はありません。</p>";
-			}
-		?>
-		<!-- <pre><//?php print_r($_SESSION); ?></pre> -->
+				else {
+					echo "<p>投稿はありません。</p>";
+				}
+			?>
+			<!-- <pre><//?php print_r($_SESSION); ?></pre> -->
+		</div>
 	</div>
 </body>
 </html>
